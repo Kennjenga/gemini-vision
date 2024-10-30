@@ -4,8 +4,8 @@ function App() {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState("");
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState(null);
+  const [response, setResponse] = useState("");
+  const [error, setError] = useState("");
 
   const API_URL = "http://localhost:8001"; // Match the backend port
 
@@ -111,8 +111,10 @@ function App() {
 
   const clear = () => {
     setValue("");
-    setResponse(null);
-    setError(null);
+    setResponse("");
+    setError("");
+    setImage(null);
+    setLoading(false);
   };
 
   // logic for the suprise
@@ -171,7 +173,9 @@ function App() {
         </div>
         <div>
           What do you want to know about the image?
-          <button onClick={suprise}>describe image</button>
+          <button onClick={suprise} disabled={response}>
+            describe image
+          </button>
         </div>
         <div className="input-container">
           <input
